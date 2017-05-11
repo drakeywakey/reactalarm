@@ -1,22 +1,33 @@
 var React = require('react');
 var SetUrl = require('./SetUrl');
 var SetTime = require('./SetTime');
+var DisplayUrl = require('./DisplayUrl');
 
 class SetAlarm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            timeSet: false,
-            urlSet: false
+            time: null,
+            url: null
         }
+
+        this.handleUrlSubmit = this.handleUrlSubmit.bind(this);
+    }
+    
+    handleUrlSubmit(url) {
+        this.setState(function () {
+            return {
+                url: url
+            }
+        })
     }
 
     render() {
         return (
             <div>
-                {this.state.urlSet ? <DisplayUrl /> : <SetUrl />}
-                {this.state.timeSet ? <DisplayTime /> : <SetTime />}
+                {this.state.url ? <DisplayUrl url={this.state.url} onSubmit={this.handleUrlSubmit}/> : <SetUrl onSubmit={this.handleUrlSubmit}/>}
+                {this.state.time ? <DisplayTime /> : <SetTime />}
             </div>
         )
     }
