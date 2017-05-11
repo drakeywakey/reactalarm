@@ -1,45 +1,38 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 
 class SetTime extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            time: null
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        var val = event.target.value;
+        this.setState(function() {
+            return {
+                time: val
+            }
+        })
+    }
+
     render() {
         return (
             <div>
-                <select>
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
-                    <option>06</option>
-                    <option>07</option>
-                    <option>08</option>
-                    <option>09</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                </select>
-                <select>
-                    <option>00</option>
-                    <option>05</option>
-                    <option>10</option>
-                    <option>15</option>
-                    <option>20</option>
-                    <option>25</option>
-                    <option>30</option>
-                    <option>35</option>
-                    <option>40</option>
-                    <option>45</option>
-                    <option>50</option>
-                    <option>55</option>
-                </select>
-                <select>
-                    <option>AM</option>
-                    <option>PM</option>
-                </select>
-                <button>Set</button>
+                <input type='number' min='0' max='1440' placeholder='minutes from now' onChange={this.handleChange}/>
+                <button onClick={this.props.onSubmit.bind(null, this.state.time)}>Set</button>
             </div>
         )
     }
+}
+
+SetTime.propTypes = {
+    onSubmit: PropTypes.func.isRequired
 }
 
 module.exports = SetTime;
