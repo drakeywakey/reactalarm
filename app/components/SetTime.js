@@ -16,7 +16,7 @@ class SetTime extends React.Component {
         var val = event.target.value;
         this.setState(function() {
             return {
-                time: val
+                time: Number(val)
             }
         })
     }

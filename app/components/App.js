@@ -1,5 +1,6 @@
 var React = require('react');
 var SetAlarm = require('./SetAlarm');
+var Alarm = require('./Alarm');
 
 class App extends React.Component {
     constructor(props) {

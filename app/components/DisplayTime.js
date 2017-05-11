@@ -1,15 +1,14 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 
-class DisplayTime extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>In {this.props.time} minutes</p>
-                <button onClick={this.props.onSubmit.bind(this, null)}>Reset</button>
-            </div>
-        )
-    }
+function DisplayTime(props) {
+    return (
+        <div>
+            <p>In {props.time} minutes
+                <button onClick={props.onSubmit.bind(this, null)}>Reset</button>
+            </p>
+        </div>
+    )
 }
 
 DisplayTime.propTypes = {

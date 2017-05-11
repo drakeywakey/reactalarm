@@ -1,15 +1,13 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 
-class DisplayUrl extends React.Component {
-    render() {
-        return (
-            <div>
-                <a href={this.props.url}>{this.props.url}</a>
-                <button onClick={this.props.onSubmit.bind(this, null)}>Reset</button>
-            </div>
-        )
-    }
+function DisplayUrl(props) {
+    return (
+        <div>
+            <a href={props.url}>{props.url}</a>
+            <button onClick={props.onSubmit.bind(this, null)}>Reset</button>
+        </div>
+    )
 }
 
 DisplayUrl.propTypes = {
