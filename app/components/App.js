@@ -7,7 +7,6 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            on: false,
             time: null,
             url: null
         }
@@ -18,8 +17,6 @@ class App extends React.Component {
     setTimeAndUrl(url, time) {
         this.setState(function() {
             return {
-                //just for now, set on=true
-                on: true,
                 time: time,
                 url: url
             }
@@ -29,7 +26,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {this.state.on ? <Alarm url={this.state.url}/> : <SetAlarm setTimeAndUrl={this.setTimeAndUrl}/>}
+                {this.state.url ? 
+                    <Alarm time={this.state.time} url={this.state.url} reset={this.setTimeAndUrl}/> : 
+                    <SetAlarm setTimeAndUrl={this.setTimeAndUrl}/>}
             </div>
         )
     }

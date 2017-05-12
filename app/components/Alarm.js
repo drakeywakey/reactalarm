@@ -6,14 +6,19 @@ function Alarm(props) {
     url = url.replace('watch?v=', 'embed/')
 
     return (
-        <iframe title="YouTube video player" className="youtube-player" type="text/html" 
-            width="640" height="390" src={url}
-            frameborder="0" allowFullScreen>
-        </iframe>
+        <div>
+            <iframe title="YouTube video player" className="youtube-player" type="text/html" 
+                width="640" height="390" src={url}
+                frameborder="0" allowFullScreen>
+            </iframe>
+            <button onClick={props.reset.bind(null, null, null)}>Reset</button>
+        </div>
     )
 }
 
 Alarm.propTypes = {
+    reset: PropTypes.func.isRequired,
+    time: PropTypes.number.isRequired,
     url: PropTypes.string.isRequired
 }
 
