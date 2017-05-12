@@ -41,11 +41,11 @@ class SetAlarm extends React.Component {
                     <DisplayUrl url={this.state.url} onSubmit={this.handleUrlSubmit}/> : 
                     <SetUrl onSubmit={this.handleUrlSubmit}/>
                 }
-                {this.state.time ? 
+                {this.state.time !== null ? 
                     <DisplayTime time={this.state.time} onSubmit={this.handleTimeSubmit}/> : 
                     <SetTime onSubmit={this.handleTimeSubmit}/>
                 }
-                {this.state.time && this.state.url && <button onClick={this.props.setTimeAndUrl.bind(null, this.state.url, this.state.time)}>Set Alarm</button>}
+                {this.state.time !== null && this.state.url && <button onClick={this.props.setTimeAndUrl.bind(null, this.state.url, this.state.time)}>Set Alarm</button>}
             </div>
         )
     }
