@@ -3,10 +3,11 @@ var PropTypes = require('prop-types');
 
 function DisplayTime(props) {
     return (
-        <div>
-            <p>In {props.time} minutes
+        <div className='display display-time'>
+            <span>
+                <span>In {props.time} minutes</span>
                 <button onClick={props.onSubmit.bind(this, null)}>Reset</button>
-            </p>
+            </span>
         </div>
     )
 }

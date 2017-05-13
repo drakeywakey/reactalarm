@@ -36,7 +36,7 @@ class Alarm extends React.Component {
             }
             else {
                 if (prevSeconds === 0 && prevMinutes === 0) {
-                    clearinterval(this.timer);
+                    clearInterval(this.timer);
                     return
                 }
 
@@ -50,7 +50,7 @@ class Alarm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='alarm'>
                 {!(this.state.minutes === 0 && this.state.seconds === '00') ?
                 <div>{this.state.minutes} : {this.state.seconds}</div> :
                 <iframe title="YouTube video player" type="text/html" 

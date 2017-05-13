@@ -3,9 +3,11 @@ var PropTypes = require('prop-types');
 
 function DisplayUrl(props) {
     return (
-        <div>
-            <a href={props.url}>{props.url}</a>
-            <button onClick={props.onSubmit.bind(this, null)}>Reset</button>
+        <div className='display display-url'>
+            <span>
+                <span><a href={props.url}>{props.url}</a></span>
+                <button onClick={props.onSubmit.bind(this, null)}>Reset</button>
+            </span>
         </div>
     )
 }
