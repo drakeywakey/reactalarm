@@ -23,7 +23,7 @@ class SetTime extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='set set-time'>
                 <input type='number' min='0' max='1440' placeholder='minutes from now' onChange={this.handleChange}/>
                 <button onClick={this.props.onSubmit.bind(null, this.state.time)}>Set</button>
             </div>

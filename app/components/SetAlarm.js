@@ -5,6 +5,8 @@ var DisplayUrl = require('./DisplayUrl');
 var DisplayTime = require('./DisplayTime');
 var PropTypes = require('prop-types');
 
+require('../styles/setAlarm.less');
+
 class SetAlarm extends React.Component {
     constructor(props) {
         super(props);
@@ -36,7 +38,7 @@ class SetAlarm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='set-alarm'>
                 {this.state.url ? 
                     <DisplayUrl url={this.state.url} onSubmit={this.handleUrlSubmit}/> : 
                     <SetUrl onSubmit={this.handleUrlSubmit}/>
