@@ -27,7 +27,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='app'>
                 {this.state.url ? 
                     <Alarm time={this.state.time} url={this.state.url} reset={this.setTimeAndUrl}/> : 
                     <SetAlarm setTimeAndUrl={this.setTimeAndUrl}/>}
