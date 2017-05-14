@@ -24,7 +24,7 @@ class SetUrl extends React.Component {
     render() {
         return (
             <div className='set set-url'>
-                <input type='text' placeholder='Video URL' onChange={this.handleChange}/>
+                <input type='text' placeholder='Youtube URL' onChange={this.handleChange}/>
                 <button onClick={this.props.onSubmit.bind(null, this.state.url)}>Set</button>
             </div>
         )

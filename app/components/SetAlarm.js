@@ -13,7 +13,9 @@ class SetAlarm extends React.Component {
 
         this.state = {
             time: null,
-            url: null
+            timeError: null,
+            url: null,
+            urlError: null
         }
 
         this.handleTimeSubmit = this.handleTimeSubmit.bind(this);
@@ -22,16 +24,32 @@ class SetAlarm extends React.Component {
 
     handleTimeSubmit(time) {
         this.setState(function() {
+            if (isNaN(time) || time < 0) {
+                return {
+                    timeError: 'Please enter a number of minutes greater than 0'
+                }
+            }
+
             return {
-                time: time
+                time: time,
+                timeError: null
             }
         })
     }
     
     handleUrlSubmit(url) {
         this.setState(function () {
-            return {
-                url: url
+            // validate the url format
+            if (url.match(/https:\/\/www\.youtube\.com\/watch\?v/)) {
+                return {
+                    url: url,
+                    urlError: null
+                }
+            }
+            else {
+                return {
+                    urlError: 'Please enter a url with the format: https://www.youtube.com/watch?v='
+                }
             }
         })
     }
@@ -39,10 +57,12 @@ class SetAlarm extends React.Component {
     render() {
         return (
             <div className='set-alarm'>
+                {this.state.urlError && <p className='error'>{this.state.urlError}</p>}
                 {this.state.url ? 
                     <DisplayUrl url={this.state.url} onSubmit={this.handleUrlSubmit}/> : 
                     <SetUrl onSubmit={this.handleUrlSubmit}/>
                 }
+                {this.state.timeError && <p className='error'>{this.state.timeError}</p>}
                 {this.state.time !== null ? 
                     <DisplayTime time={this.state.time} onSubmit={this.handleTimeSubmit}/> : 
                     <SetTime onSubmit={this.handleTimeSubmit}/>
