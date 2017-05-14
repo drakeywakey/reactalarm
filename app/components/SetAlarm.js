@@ -75,7 +75,7 @@ class SetAlarm extends React.Component {
                     <DisplayTime time={this.state.time} onSubmit={this.handleTimeSubmit}/> : 
                     <SetTime onSubmit={this.handleTimeSubmit}/>
                 }
-                {this.state.time !== null && this.state.url && <button onClick={this.props.setTimeAndUrl.bind(null, this.state.url, this.state.time)}>Set Alarm</button>}
+                {this.state.time !== null && this.state.url && <button className='submit-alarm' onClick={this.props.setTimeAndUrl.bind(null, this.state.url, this.state.time)}>Set Alarm</button>}
             </div>
         )
     }
