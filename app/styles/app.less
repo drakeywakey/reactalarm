@@ -2,13 +2,21 @@
 
 .app {
     background: darken(@primary-color, 7%);
+    border-radius: 10px;
     padding: 30px;
 
     button {
         background: white;
+        border: none;
+        border-radius: 10px;
         color: @primary-color;
         height: 38px;
         width: 54px;
+
+        &:hover {
+            background: lighten(@primary-color, 7%);
+            color: white;
+        }
     }
 
     .alarm {

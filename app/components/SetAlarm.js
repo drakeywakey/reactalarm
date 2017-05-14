@@ -26,7 +26,7 @@ class SetAlarm extends React.Component {
         this.setState(function() {
             if (isNaN(time) || time < 0) {
                 return {
-                    timeError: 'Please enter a number of minutes greater than 0'
+                    timeError: 'Please enter a number of minutes at least 0'
                 }
             }
 
@@ -37,10 +37,17 @@ class SetAlarm extends React.Component {
         })
     }
     
-    handleUrlSubmit(url) {
+    handleUrlSubmit(url, reset) {
         this.setState(function () {
+            if (reset) {
+                return {
+                    url: null,
+                    urlError: null
+                }
+            }
+
             // validate the url format
-            if (url.match(/https:\/\/www\.youtube\.com\/watch\?v/)) {
+            if (url && url.match(/https:\/\/www\.youtube\.com\/watch\?v/)) {
                 return {
                     url: url,
                     urlError: null
@@ -48,6 +55,7 @@ class SetAlarm extends React.Component {
             }
             else {
                 return {
+                    url: null,
                     urlError: 'Please enter a url with the format: https://www.youtube.com/watch?v='
                 }
             }

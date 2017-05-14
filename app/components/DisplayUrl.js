@@ -6,7 +6,7 @@ function DisplayUrl(props) {
         <div className='display display-url'>
             <span>
                 <span><a href={props.url}>{props.url}</a></span>
-                <button onClick={props.onSubmit.bind(this, null)}>Reset</button>
+                <button onClick={props.onSubmit.bind(this, null, true)}>Reset</button>
             </span>
         </div>
     )
