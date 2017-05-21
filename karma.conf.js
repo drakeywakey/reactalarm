@@ -16,7 +16,7 @@ module.exports = function (config) {
             devtool: 'inline-source-map',
             module: {
                 loaders: [
-                    { test: /\.js$/, loader: 'babel-loader'},
+                    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
                     {
                         test: /\.js$/,
                         exclude: /(test|node_modules|bower_components)\//,
@@ -34,6 +34,12 @@ module.exports = function (config) {
                         }]
                     }
                 ]
+            },
+            externals: {
+                'cheerio': 'window',
+                'react/addons': true,
+                'react/lib/ExecutionEnvironment': true,
+                'react/lib/ReactContext': true
             }
         },
         webpackServer: {
