@@ -15,8 +15,8 @@ describe('<App />', function() {
         expect(wrapper.find(Alarm)).to.have.length(0);
     }),
 
-    it('renders an <Alarm /> component when time and url are set', function() {
-        wrapper.setState({ time: 1, url: 'www.yep.net' });
+    it('renders an <Alarm /> component when time and url are set', function () {
+        wrapper.instance().setTimeAndUrl('www.yep.net', 1);
         expect(wrapper.find(Alarm)).to.have.length(1);
         expect(wrapper.find(SetAlarm)).to.have.length(0);
     })

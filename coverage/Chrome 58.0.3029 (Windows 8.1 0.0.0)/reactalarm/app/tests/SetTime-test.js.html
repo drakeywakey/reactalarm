@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for reactalarm\app\tests\App-test.js</title>
+    <title>Code coverage report for reactalarm\app\tests\SetTime-test.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">all files</a> / <a href="index.html">reactalarm/app/tests/</a> App-test.js
+      <a href="../../../index.html">all files</a> / <a href="index.html">reactalarm/app/tests/</a> SetTime-test.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -30,9 +30,9 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>2/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -74,16 +74,16 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -96,20 +96,20 @@ var TestUtils = require('react-dom/test-utils');
 var shallow = require('enzyme').shallow;
 var expect = require('chai').expect;
 &nbsp;
-var App = require('../components/App');
-var SetAlarm = require('../components/SetAlarm');
-var Alarm = require('../components/Alarm');
+var SetTime = require('../components/SetTime');
 &nbsp;
-describe('&lt;App /&gt;', function () {
-    var wrapper = shallow(React.createElement(App, null));
+describe('&lt;SetTime /&gt;', function () {
+    // is it proper to just use a do-nothing function stub?
+    var wrapper = shallow(React.createElement(SetTime, { onSubmit: <span class="fstat-no" title="function not covered" >function onSubmit() {</span>} }));
 &nbsp;
-    it('renders a &lt;SetAlarm /&gt; component on load', function () {
-        expect(wrapper.find(SetAlarm)).to.have.length(1);
-        expect(wrapper.find(Alarm)).to.have.length(0);
-    }), it('renders an &lt;Alarm /&gt; component when time and url are set', function () {
-        wrapper.instance().setTimeAndUrl('www.yep.net', 1);
-        expect(wrapper.find(Alarm)).to.have.length(1);
-        expect(wrapper.find(SetAlarm)).to.have.length(0);
+    it('sets the time whenever the input changes', function () {
+        var input = wrapper.find('input');
+        input.simulate('change', { target: { value: 0 } });
+        expect(wrapper.state().time).to.equal(0);
+        input.simulate('change', { target: { value: -5 } });
+        expect(wrapper.state().time).to.equal(-5);
+        input.simulate('change', { target: { value: 5 } });
+        expect(wrapper.state().time).to.equal(5);
     });
 });
 &nbsp;</pre></td></tr>
