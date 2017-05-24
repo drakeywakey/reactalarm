@@ -19,7 +19,7 @@ module.exports = function (config) {
                     { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
                     {
                         test: /\.js$/,
-                        exclude: /(test|node_modules|bower_components)\//,
+                        exclude: /(test.*|node_modules)/,
                         loader: 'istanbul-instrumenter-loader',
                         enforce: 'post'
                     },
